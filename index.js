@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 const CREDS = require('./creds');
-//const mongoose = require('mongoose');
-//const User = require('./models/user');
+const mongoose = require('mongoose');
+const Company = require('./models/company');
+let axios = require('axios');
 
 async function run() {
   const browser = await puppeteer.launch({
@@ -82,21 +83,25 @@ async function run() {
   let MORE_BUTTON_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.more';
 
+
+
+
+
   // clicks the "more" button allowing us to see all the different companies.
   let numPages = await getNumPages(page);
   console.log('Numpages: ', numPages);
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 10; i++) {
     await page.click(MORE_BUTTON_SELECTOR);
     MORE_BUTTON_SELECTOR = MORE_BUTTON_SELECTOR.replace(
       'div.more',
       'div.dc59.frs86._a._jm > div > div.more'
     );
-    await page.waitFor(1.5 * 1000);
+    await page.waitFor(4 * 1000);
   }
 
   // you could set a limit of how many companies you want to contact, currently i have 15
 
-  for (let i = 2; i <= 15; i++) {
+  for (let i = 2; i <= 150; i++) {
     // change the index to the next child
 
     let companySelector = COMPANY_SELECTOR.replace('INDEX', i);
@@ -110,16 +115,36 @@ async function run() {
     let totalRaisedSelector = TOTAL_RAISED_SELECTOR.replace('INDEX', i);
 
     let company = await page.evaluate(sel => {
-      return document.querySelector(sel).innerHTML.trim();
+      let element = document.querySelector(sel);
+      return element ? element.innerHTML.trim() : null;
     }, companySelector);
 
+    if (!company) continue;
+
+    console.log(company, i);
+
+
     let description = await page.evaluate(sel => {
-      return document.querySelector(sel).innerHTML.trim();
+      let element = document.querySelector(sel);
+      return element ? element.innerHTML.trim() : null;
     }, descriptionSelector);
 
+    if (!description) continue;
+
+
+    console.log(description, i);
+
+
     let joined = await page.evaluate(sel => {
-      return document.querySelector(sel).innerHTML.trim();
+      let element = document.querySelector(sel);
+      return element ? element.innerHTML.trim() : null;
     }, joinedSelector);
+
+    if (!joined) continue;
+
+
+    console.log(joined, i);
+
 
     let location = await page.evaluate(sel => {
       let element = document.querySelector(sel);
@@ -128,12 +153,20 @@ async function run() {
 
     if (!location) continue;
 
+
+    console.log(location, i);
+
+
     let market = await page.evaluate(sel => {
       let element = document.querySelector(sel);
       return element ? element.innerHTML.trim() : null;
     }, marketSelector);
 
     if (!market) continue;
+
+
+    console.log(mareket, i);
+
 
     let website = await page.evaluate(sel => {
       let element = document.querySelector(sel);
@@ -142,12 +175,20 @@ async function run() {
 
     if (!website) continue;
 
+
+    console.log(website, i);
+
+
     let employees = await page.evaluate(sel => {
       let element = document.querySelector(sel);
       return element ? element.innerHTML.trim() : null;
     }, employeesSelector);
 
     if (!employees) continue;
+
+
+    console.log(employees, i);
+
 
     let stage = await page.evaluate(sel => {
       let element = document.querySelector(sel);
@@ -163,6 +204,8 @@ async function run() {
     } else {
       continue;
     }
+    console.log(stage, i);
+
 
     let totalRaised = await page.evaluate(sel => {
       let element = document.querySelector(sel);
@@ -170,8 +213,10 @@ async function run() {
     }, totalRaisedSelector);
 
     if (!totalRaised) continue;
+    console.log(totalRaised, i);
 
-    let companyInfo = {
+
+    /* let companyInfo = {
       company: company,
       description: description,
       joined: joined,
@@ -182,94 +227,41 @@ async function run() {
       stage: stage,
       totalRaised: totalRaised
     };
+ */
+    //console.log(companyInfo);
 
-    console.log(companyInfo);
+    //hunter.io call
+    /*  let KEY = '6f4c435764ce159e8c1148cba2183cff27c10cf1';
+     let searchUrl = `https://api.hunter.io/v2/domain-search?domain=${website}&api_key=${KEY}`;
 
-    //console.log(company, description, joined, location, market, website, employees, stage, totalRaised);
+
+     await axios.get(searchUrl)
+       .then(function (response) {
+         //console.log(response.data.data);
+         emails = response.data.data.emails;
+       })
+       .catch(function (error) {
+         // console.log(error);
+       })
+
+
+     upsertCompany({
+       company: company,
+       description: description,
+       joined: joined,
+       location: location,
+       market: market,
+       website: website,
+       employees: employees,
+       stage: stage,
+       totalRaised: totalRaised,
+       emails: emails,
+       dateCrawled: new Date()
+     }) */
+
   }
 
-  /* let username = await page.evaluate((sel) => {
-    return document.querySelector(sel).getAttribute('href').replace('/', '');
-  }, usernameSelector);
-
-  let email = await page.evaluate((sel) => {
-    let element = document.querySelector(sel);
-    return element ? element.innerHTML : null;
-  }, emailSelector);
-
-  // not all users have emails visible
-  if (!email)
-    continue;
- */
-
-  // TODO save this user
 }
-
-/*
-
-  const userToSearch = 'john';
-  const searchUrl = `https://github.com/search?q=${userToSearch}&type=Users&utf8=%E2%9C%93`;
-
-  await page.goto(searchUrl);
-  await page.waitFor(2 * 1000);
-
-  // const LIST_USERNAME_SELECTOR = '#user_search_results > div.user-list > div:nth-child(1) > div.d-flex > div > a';
-  const LIST_USERNAME_SELECTOR = '#user_search_results > div.user-list > div:nth-child(INDEX) > div.d-flex > div > a';
-  // const LIST_EMAIL_SELECTOR = '#user_search_results > div.user-list > div:nth-child(2) > div.d-flex > div > ul > li:nth-child(2) > a';
-  const LIST_EMAIL_SELECTOR = '#user_search_results > div.user-list > div:nth-child(INDEX) > div.d-flex > div > ul > li:nth-child(2) > a';
-
-  const LENGTH_SELECTOR_CLASS = 'user-list-item';
-
-  let numPages = await getNumPages(page);
-
-  console.log('Numpages: ', numPages);
-
-
-  /// make page number 10 so we don't have abuse detection. I might want to add in a set timeout or two
-
-  numPages = 10
-
-  for (let h = 1; h <= numPages; h++) {
-
-    let pageUrl = searchUrl + '&p=' + h;
-
-    await page.goto(pageUrl);
-
-    let listLength = await page.evaluate((sel) => {
-      return document.getElementsByClassName(sel).length;
-    }, LENGTH_SELECTOR_CLASS);
-
-    for (let i = 1; i <= listLength; i++) {
-      // change the index to the next child
-      let usernameSelector = LIST_USERNAME_SELECTOR.replace("INDEX", i);
-      let emailSelector = LIST_EMAIL_SELECTOR.replace("INDEX", i);
-
-      let username = await page.evaluate((sel) => {
-        return document.querySelector(sel).getAttribute('href').replace('/', '');
-      }, usernameSelector);
-
-      let email = await page.evaluate((sel) => {
-        let element = document.querySelector(sel);
-        return element ? element.innerHTML : null;
-      }, emailSelector);
-
-      // not all users have emails visible
-      if (!email)
-        continue;
-
-      console.log(username, ' -> ', email);
-
-      // TODO save this users
-      upsertUser({
-        username: username,
-        email: email,
-        dateCrawled: new Date()
-      });
-
-
-    }
-  }*/
-//};
 
 run();
 
@@ -294,18 +286,18 @@ async function getNumPages(page) {
   let numPages = Math.ceil(numUsers / 20);
   return numPages;
 }
-/*
-function upsertUser(userObj) {
 
-  const DB_URL = 'mongodb://localhost/thal';
+function upsertCompany(companyObj) {
+
+  const DB_URL = 'mongodb://localhost/angel';
 
   if (mongoose.connection.readyState == 0) {
     mongoose.connect(DB_URL);
   }
 
-  // if this email exists, update the entry, don't insert
+  // if the website exists don't update the entry
   let conditions = {
-    email: userObj.email
+    website: companyObj.website
   };
   let options = {
     upsert: true,
@@ -313,7 +305,7 @@ function upsertUser(userObj) {
     setDefaultsOnInsert: true
   };
 
-  User.findOneAndUpdate(conditions, userObj, options, (err, result) => {
+  Company.findOneAndUpdate(conditions, companyObj, options, (err, result) => {
     if (err) throw err;
   });
-} */
+}

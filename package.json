@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
+    "hunter.io": "^0.2.7",
+    "hunterio": "^1.0.0",
     "mongoose": "^5.2.10",
     "puppeteer": "^1.7.0"
   }
