@@ -58,26 +58,60 @@ async function run() {
   await page.click(DATE_FILTER);
   await page.waitFor(4 * 1000);
 
-  const COMPANY_SELECTOR =
+  let COMPANY_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.name > a';
-  const DESCRIPTION_SELECTOR =
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(2) > div > div.company.column > div > div.text > div.name > a  
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.name > a
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(21) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(2) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.more
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(20) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(20) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(21) > div > div.company.column > div > div.text > div.name > a
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.name > a
+
+
+
+  let DESCRIPTION_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.pitch';
-  const JOINED_SELECTOR =
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.pitch
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.pitch
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.company.column > div > div.text > div.pitch
+
+
+  let JOINED_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.joined.selected > div.value';
-  const LOCATION_SELECTOR =
+
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.joined.selected > div.value
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.column.joined.selected > div.value
+  //#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div.dc59.frs86._a._jm > div > div.dc59.frs86._a._jm > div > div:nth-child(1) > div > div.column.joined.selected > div.value
+
+  let LOCATION_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.location > div.value > div > a';
-  const MARKET_SELECTOR =
+  let MARKET_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.market > div.value > div > a';
-  const WEBSITE_SELECTOR =
+  let WEBSITE_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.website > div.value > div > a';
-  const EMPLOYEES_SELECTOR =
+  let EMPLOYEES_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.company_size > div.value';
-  const STAGE_SELECTOR =
+  let STAGE_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.stage > div.value';
-  const TOTAL_RAISED_SELECTOR =
+  let TOTAL_RAISED_SELECTOR =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(INDEX) > div > div.column.raised > div.value';
 
-  const LENGTH_SELECTOR_CLASS =
+  let LENGTH_SELECTOR_CLASS =
     '#root > div.page.unmodified.dl85.layouts.fhr17.header._a._jm > div.companies.dc59.fix36._a._jm > div > div.content > div.dc59.frs86._a._jm > div.results > div:nth-child(2)';
 
   let MORE_BUTTON_SELECTOR =
@@ -99,124 +133,162 @@ async function run() {
     await page.waitFor(4 * 1000);
   }
 
-  // you could set a limit of how many companies you want to contact, currently i have 15
+  for (let h = 0; h <= 5; h++) {
 
-  for (let i = 2; i <= 150; i++) {
-    // change the index to the next child
+    console.log("h", h)
 
-    let companySelector = COMPANY_SELECTOR.replace('INDEX', i);
-    let descriptionSelector = DESCRIPTION_SELECTOR.replace('INDEX', i);
-    let joinedSelector = JOINED_SELECTOR.replace('INDEX', i);
-    let locationSelector = LOCATION_SELECTOR.replace('INDEX', i);
-    let marketSelector = MARKET_SELECTOR.replace('INDEX', i);
-    let websiteSelector = WEBSITE_SELECTOR.replace('INDEX', i);
-    let employeesSelector = EMPLOYEES_SELECTOR.replace('INDEX', i);
-    let stageSelector = STAGE_SELECTOR.replace('INDEX', i);
-    let totalRaisedSelector = TOTAL_RAISED_SELECTOR.replace('INDEX', i);
+    if (h > 0) {
+      /* COMPANY_SELECTOR.replace('div:nth-child(INDEX) > div > div.company.column > div > div.text > div.name > a','div.dc59.frs86._a._jm > div > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.name > a');
+      DESCRIPTION_SELECTOR.replace('div:nth-child(INDEX) > div > div.company.column > div > div.text > div.pitch', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX) > div > div.company.column > div > div.text > div.pitch');
+      JOINED_SELECTOR.replace('') */
 
-    let company = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, companySelector);
-
-    if (!company) continue;
-
-    console.log(company, i);
+      COMPANY_SELECTOR = COMPANY_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", COMPANY_SELECTOR);
+      DESCRIPTION_SELECTOR = DESCRIPTION_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      JOINED_SELECTOR = JOINED_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      LOCATION_SELECTOR = LOCATION_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      MARKET_SELECTOR = MARKET_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      WEBSITE_SELECTOR = WEBSITE_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      EMPLOYEES_SELECTOR = EMPLOYEES_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      STAGE_SELECTOR = STAGE_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
+      TOTAL_RAISED_SELECTOR = TOTAL_RAISED_SELECTOR.replace('div:nth-child(INDEX)', 'div.dc59.frs86._a._jm > div > div:nth-child(INDEX)');
 
 
-    let description = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, descriptionSelector);
-
-    if (!description) continue;
-
-
-    console.log(description, i);
-
-
-    let joined = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, joinedSelector);
-
-    if (!joined) continue;
-
-
-    console.log(joined, i);
-
-
-    let location = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, locationSelector);
-
-    if (!location) continue;
-
-
-    console.log(location, i);
-
-
-    let market = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, marketSelector);
-
-    if (!market) continue;
-
-
-    console.log(mareket, i);
-
-
-    let website = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, websiteSelector);
-
-    if (!website) continue;
-
-
-    console.log(website, i);
-
-
-    let employees = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, employeesSelector);
-
-    if (!employees) continue;
-
-
-    console.log(employees, i);
-
-
-    let stage = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, stageSelector);
-
-    if (stage) {
-      stage
-        .replace('$', '')
-        .replace(',', '')
-        .trim();
-      stage = parseInt(stage);
-    } else {
-      continue;
     }
-    console.log(stage, i);
+
+    let x = 0;
+
+    // you could set a limit of how many companies you want to contact, currently i have 15
+
+    for (let i = 1; i <= 20; i++) {
+
+      //handeling for that first annoying batch
+
+      if (h === 0 && i === 1) {
+        i++;
+      }
+
+      if (h === 0 && i === 20 && x === 1) {
+        i = 21;
+      }
 
 
-    let totalRaised = await page.evaluate(sel => {
-      let element = document.querySelector(sel);
-      return element ? element.innerHTML.trim() : null;
-    }, totalRaisedSelector);
+      //every 
 
-    if (!totalRaised) continue;
-    console.log(totalRaised, i);
+      // change the index to the next child
+      let companySelector = COMPANY_SELECTOR.replace('INDEX', i);
+      let descriptionSelector = DESCRIPTION_SELECTOR.replace('INDEX', i);
+      let joinedSelector = JOINED_SELECTOR.replace('INDEX', i);
+      let locationSelector = LOCATION_SELECTOR.replace('INDEX', i);
+      let marketSelector = MARKET_SELECTOR.replace('INDEX', i);
+      let websiteSelector = WEBSITE_SELECTOR.replace('INDEX', i);
+      let employeesSelector = EMPLOYEES_SELECTOR.replace('INDEX', i);
+      let stageSelector = STAGE_SELECTOR.replace('INDEX', i);
+      let totalRaisedSelector = TOTAL_RAISED_SELECTOR.replace('INDEX', i);
+
+      let company = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, companySelector);
+
+      if (!company) continue;
+
+      console.log(company, i);
 
 
-    /* let companyInfo = {
+      let description = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, descriptionSelector);
+
+      if (!description) continue;
+
+
+      console.log(description, i);
+
+
+      let joined = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, joinedSelector);
+
+      if (!joined) continue;
+
+
+      console.log(joined, i);
+
+
+      let location = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, locationSelector);
+
+      if (!location) continue;
+
+
+      console.log(location, i);
+
+
+      let market = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, marketSelector);
+
+      if (!market) continue;
+
+
+      console.log(market, i);
+
+
+      let website = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, websiteSelector);
+
+      if (!website) continue;
+
+
+      console.log(website, i);
+
+
+      let employees = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, employeesSelector);
+
+      if (!employees) continue;
+
+
+      console.log(employees, i);
+
+
+      let stage = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, stageSelector);
+
+      if (stage) {
+        stage
+          .replace('$', '')
+          .replace(',', '')
+          .trim();
+        stage = parseInt(stage);
+      } else {
+        continue;
+      }
+      console.log(stage, i);
+
+
+      let totalRaised = await page.evaluate(sel => {
+        let element = document.querySelector(sel);
+        return element ? element.innerHTML.trim() : null;
+      }, totalRaisedSelector);
+
+      if (!totalRaised) continue;
+      console.log(totalRaised, i);
+
+
+      /* let companyInfo = {
       company: company,
       description: description,
       joined: joined,
@@ -228,36 +300,44 @@ async function run() {
       totalRaised: totalRaised
     };
  */
-    //console.log(companyInfo);
+      //console.log(companyInfo);
 
-    //hunter.io call
-    /*  let KEY = '6f4c435764ce159e8c1148cba2183cff27c10cf1';
-     let searchUrl = `https://api.hunter.io/v2/domain-search?domain=${website}&api_key=${KEY}`;
-
-
-     await axios.get(searchUrl)
-       .then(function (response) {
-         //console.log(response.data.data);
-         emails = response.data.data.emails;
-       })
-       .catch(function (error) {
-         // console.log(error);
-       })
+      //hunter.io call
+      /*  let KEY = '6f4c435764ce159e8c1148cba2183cff27c10cf1';
+       let searchUrl = `https://api.hunter.io/v2/domain-search?domain=${website}&api_key=${KEY}`;
 
 
-     upsertCompany({
-       company: company,
-       description: description,
-       joined: joined,
-       location: location,
-       market: market,
-       website: website,
-       employees: employees,
-       stage: stage,
-       totalRaised: totalRaised,
-       emails: emails,
-       dateCrawled: new Date()
-     }) */
+       await axios.get(searchUrl)
+         .then(function (response) {
+           //console.log(response.data.data);
+           emails = response.data.data.emails;
+         })
+         .catch(function (error) {
+           // console.log(error);
+         })
+
+
+       upsertCompany({
+         company: company,
+         description: description,
+         joined: joined,
+         location: location,
+         market: market,
+         website: website,
+         employees: employees,
+         stage: stage,
+         totalRaised: totalRaised,
+         emails: emails,
+         dateCrawled: new Date()
+       }) */
+
+
+      if (h === 0 && i === 20 && x === 0) {
+        x = 1;
+        i = 19;
+      }
+
+    }
 
   }
 
