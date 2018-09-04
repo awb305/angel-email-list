@@ -1,17 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm">Company Name</div>
-    <div class="col-sm">Description</div>
-    <div class="col-sm">website</div>
+    <div class="col-sm">{{company}}</div>
+    <div class="col-sm">{{description}}</div>
+    <div class="col-sm">
+      <a href={{webwsite}}>{{website}}</a>
+      </div>
   </div>
   <div class="row">
-    <div class="col-sm">location</div>
-    <div class="col-sm">total raised</div>
-    <div class="col-sm">date crawled</div>
+    <div class="col-sm">{{location}}</div>
+    <div class="col-sm">Total Raised: {{totalRaised}}</div>
+    <div class="col-sm">Date Crawled: {{dateCrawled}}</div>
   </div>
   <div class="row">
-    <div class="col-sm">email</div>
-    <div class="col-sm">email</div>
-    <div class="col-sm">email</div>
+    {{#each emails}}
+    <div class="col-sm">hey{{this.value}}</div>
+    {{/each}}
+
   </div>
 </div>
+
+
+

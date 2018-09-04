@@ -14,7 +14,7 @@ db.on("error", function(error) {
 
 module.exports = function(app){
   // 2. At the "/all" path, display every entry in the animals collection
-  app.get("/all", function(req, res) {
+  /* app.get("/all", function(req, res) {
     // Query: In our database, go to the animals collection, then "find" everything
     db.companies.find({ $where: "this.emails.length > 1" }, function(error, found) {
       // Log any errors if the server encounters one
@@ -26,7 +26,7 @@ module.exports = function(app){
         res.json(found);
       }
     });
-  });
+  }); */
 
 
 

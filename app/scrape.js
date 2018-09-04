@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
-const CREDS = require('./creds');
+const CREDS = require('../creds');
 const mongoose = require('mongoose');
-const Company = require('./models/company');
+const Company = require('../models/company');
 let axios = require('axios');
 
 async function run() {
