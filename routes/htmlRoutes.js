@@ -25,8 +25,7 @@ module.exports = function(app){
            console.log(error);
          }
          else {
-           console.log(found.emails);
-           res.render("company", {
+           res.render("companyRow", {
              company: found.company,
              description: found.description, 
              website: found.website,
@@ -49,7 +48,9 @@ module.exports = function(app){
       }
       // Otherwise, send the result of this query to the browser
       else {
-        res.json(found);
+        res.render("companyRow", {
+          companyDetails: found
+        });
       }
     });
   });
