@@ -1,21 +1,19 @@
-
+<div class="col">
   <div class="row">
-    <div class="col-sm">{{company}}</div>
-    <div class="col-sm">{{description}}</div>
-    <div class="col-sm">
-      <a href={{webwsite}}>{{website}}</a>
-      </div>
+    <div class="col-sm-4" class="details-col">
+      <a href="https://{{website}}" target="_blank">{{company}}</a>
+      <p id="description">{{description}}</p>
+      <p id="location">Location: {{location}}</p>
+    </div>
+    <div class="col-sm-4" class="details-col">
+      <p id="filler"></p>
+      <p id="totalRaised">Total Raised: {{totalRaised}}</p>
+      <p id="DateCrawled">Date Crawled: {{dateCrawled}}</p>
+    </div>
+    <div class="col-sm-4" class="details-col" id="email-col">
+      {{#each emails}}
+      <div class="col-sm email"><a href="mailto:" + {{this.value}}>{{this.value}}</a></div>
+      {{/each}}
+    </div>
   </div>
-  <div class="row">
-    <div class="col-sm">{{location}}</div>
-    <div class="col-sm">Total Raised: {{totalRaised}}</div>
-    <div class="col-sm">Date Crawled: {{dateCrawled}}</div>
-  </div>
-  <div class="row">
-    {{#each emails}}
-    <div class="col-sm">hey{{this.value}}</div>
-    {{/each}}
-  </div>
-
-
-
+</div>

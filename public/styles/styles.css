@@ -1,3 +1,23 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.company {
+  background-color: lightgrey;
+  margin: 2rem;
+  border-color: black;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.details-col {
+  margin: .2rem 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+#filler {
+  padding: 10px
+}

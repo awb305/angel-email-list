@@ -39,7 +39,7 @@ module.exports = function(app){
        });
       });
 
-  app.get("/all", function(req, res) {
+  app.get("/all-companies", function(req, res) {
     // Query: In our database, go to the animals collection, then "find" everything
     db.companies.find({ $where: "this.emails.length > 1" }, function(error, found) {
       // Log any errors if the server encounters one
