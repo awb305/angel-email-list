@@ -16,23 +16,30 @@ db.on("error", function(error) {
 var db = require("../models");
 
 module.exports = function (app) {
-  // 2. At the "/all" path, display every entry in the animals collection
-  app.get("/all", function (req, res) {
-    // Query: In our database, go to the animals collection, then "find" everything
-    db.companies.find({
-      $where: "this.emails.length > 1"
-    }, function (error, found) {
-      // Log any errors if the server encounters one
-      if (error) {
-        console.log(error);
-      }
-      // Otherwise, send the result of this query to the browser
-      else {
-        res.json(found);
-      }
+    // 2. At the "/all" path, display every entry in the animals collection
+    app.get("/all", function (req, res) {
+      // Query: In our database, go to the animals collection, then "find" everything
+      db.companies.find({
+        $where: "this.emails.length > 1"
+      }, function (error, found) {
+        // Log any errors if the server encounters one
+        if (error) {
+          console.log(error);
+        }
+        // Otherwise, send the result of this query to the browser
+        else {
+          res.json(found);
+        }
+      });
     });
-  });
+
+    app.get("/scrape", function (req, res) {
+        await require("../app/scrape");
+        res.send("done");
+
+
+      }
 
 
 
-}
+    }

@@ -6,7 +6,7 @@ let axios = require('axios');
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: true
   });
   const page = await browser.newPage();
 
@@ -286,10 +286,17 @@ async function getNumPages(page) {
 
 function upsertCompany(companyObj) {
 
-  const DB_URL = 'mongodb://localhost/angel';
+  var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/angel";
+
+  // Set mongoose to leverage built in JavaScript ES6 Promises
+  // Connect to the Mongo DB
+  mongoose.Promise = Promise;
+  mongoose.connect(MONGODB_URI);
+
+  /* const DB_URL = 'mongodb://localhost/angel';
   if (mongoose.connection.readyState == 0) {
     mongoose.connect(DB_URL);
-  }
+  } */
   // if the website exists don't update the entry
   let conditions = {
     website: companyObj.website
