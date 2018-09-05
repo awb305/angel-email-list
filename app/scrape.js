@@ -6,7 +6,7 @@ let axios = require('axios');
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: true
+    headless: false
   });
   const page = await browser.newPage();
 
@@ -235,7 +235,8 @@ async function run() {
           emails = response.data.data.emails;
         })
         .catch(function (error) {
-          // console.log(error);
+          console.log(error);
+          emails = ["N/A"];
         })
 
       upsertCompany({
