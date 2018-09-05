@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var mongoose = require("mongoose");
 
 
 //var db = require("./models");
@@ -28,7 +29,12 @@ app.set("view engine", "handlebars");
 
 // Database configuration
 // Save the URL of our database as well as the name of our collection
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/angel";
 
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // Routes
 require("./routes/apiRoutes")(app);
@@ -75,10 +81,12 @@ app.get("/all", function(req, res) {
 
 
 // 3. At the "/name" path, display every entry in the animals collection, sorted by name
-app.get("/name", function(req, res) {
+app.get("/name", function (req, res) {
   // Query: In our database, go to the animals collection, then "find" everything,
   // but this time, sort it by name (1 means ascending order)
-  db.animals.find().sort({ name: 1 }, function(error, found) {
+  db.animals.find().sort({
+    name: 1
+  }, function (error, found) {
     // Log any errors if the server encounters one
     if (error) {
       console.log(error);
@@ -91,10 +99,12 @@ app.get("/name", function(req, res) {
 });
 
 // 4. At the "/weight" path, display every entry in the animals collection, sorted by weight
-app.get("/weight", function(req, res) {
+app.get("/weight", function (req, res) {
   // Query: In our database, go to the animals collection, then "find" everything,
   // but this time, sort it by weight (-1 means descending order)
-  db.animals.find().sort({ weight: -1 }, function(error, found) {
+  db.animals.find().sort({
+    weight: -1
+  }, function (error, found) {
     // Log any errors if the server encounters one
     if (error) {
       console.log(error);
